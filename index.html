@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veri Bilimi ve Yapay Zeka Uzmanlığı | Europe Coding School</title>
+    <meta name="description" content="Europe Coding School Veri Bilimi ve Yapay Zeka Uzmanlığı Programı. Sıfırdan ileri seviyeye, canlı dersler, MLOps, LLM'ler ve Avrupa staj ekosistemi.">
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eef6ff',
+                            100: '#d9eaff',
+                            500: '#2563eb',
+                            600: '#1d4ed8',
+                            cyan: '#06b6d4',
+                            purple: '#8b5cf6',
+                            dark: '#070b14',
+                            darkCard: '#0f172a',
+                            darkBorder: '#1e293b'
+                        }
+                    },
+                    boxShadow: {
+                        glow: '0 0 45px -10px rgba(37, 99, 235, 0.35)',
+                        glowPurple: '0 0 40px -10px rgba(139, 92, 246, 0.3)'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar & glassmorphism */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #070b14;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-slate-200 font-sans antialiased selection:bg-brand-500 selection:text-white relative overflow-x-hidden">
+
+    <!-- Arka Plan Parlama Efektleri (Ambient Glow) -->
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="fixed top-1/3 right-10 w-[30rem] h-[30rem] bg-brand-purple/15 rounded-full blur-3xl pointer-events-none -z-10"></div>
+    <div class="fixed bottom-10 left-1/3 w-[26rem] h-[26rem] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none -z-10"></div>
+
+    <!-- 1. HEADER & NAVBAR -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-panel border-b border-slate-800/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-brand-purple to-cyan-400 p-[2px] shadow-lg shadow-brand-500/20 group-hover:scale-105 transition duration-300">
+                    <div class="w-full h-full bg-brand-dark rounded-[10px] flex items-center justify-center font-bold text-lg text-white">
+                        <i class="fa-solid fa-code text-cyan-400"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-extrabold text-lg tracking-tight text-white flex items-center gap-1.5">
+                        Europe Coding <span class="text-cyan-400">School</span>
+                    </span>
+                    <span class="text-[10px] tracking-wider text-slate-400 uppercase font-semibold">Data Science & AI Hub</span>
+                </div>
+            </a>
+
+            <!-- Masaüstü Navigasyon -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#neden-ecs" class="hover:text-cyan-400 transition">Neden ECS?</a>
+                <a href="#mufredat" class="hover:text-cyan-400 transition">Müfredat</a>
+                <a href="#kariyer" class="hover:text-cyan-400 transition">Staj & Kariyer</a>
+                <a href="#projeler" class="hover:text-cyan-400 transition">Yapay Zeka Laboratuvarı</a>
+                <a href="#sss" class="hover:text-cyan-400 transition">SSS</a>
+            </nav>
+
+            <!-- CTA Butonu -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#basvuru" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-semibold rounded-xl group bg-gradient-to-br from-cyan-500 via-brand-500 to-purple-600 group-hover:from-cyan-500 group-hover:to-purple-600 text-white shadow-lg shadow-brand-500/20 hover:scale-[1.02] active:scale-[0.98] transition">
+                    <span class="relative px-5 py-2.5 transition-all ease-in duration-150 bg-brand-dark rounded-[10px] group-hover:bg-opacity-0 flex items-center gap-2">
+                        <span>Hemen Başvur</span>
+                        <i class="fa-solid fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                    </span>
+                </a>
+            </div>
+
+            <!-- Mobil Menü Butonu -->
+            <button id="mobileMenuBtn" aria-label="Menüyü Aç" class="md:hidden text-slate-300 hover:text-white p-2 rounded-lg bg-slate-800/60 border border-slate-700">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobil Menü Panel -->
+        <div id="mobileMenu" class="hidden md:hidden px-6 pt-4 pb-6 bg-brand-darkCard/95 border-b border-slate-800 flex flex-col gap-4 text-slate-200">
+            <a href="#neden-ecs" class="py-2 border-b border-slate-800/80 hover:text-cyan-400 mobile-link">Neden ECS?</a>
+            <a href="#mufredat" class="py-2 border-b border-slate-800/80 hover:text-cyan-400 mobile-link">Müfredat</a>
+            <a href="#kariyer" class="py-2 border-b border-slate-800/80 hover:text-cyan-400 mobile-link">Staj & Kariyer</a>
+            <a href="#projeler" class="py-2 border-b border-slate-800/80 hover:text-cyan-400 mobile-link">Yapay Zeka Laboratuvarı</a>
+            <a href="#sss" class="py-2 border-b border-slate-800/80 hover:text-cyan-400 mobile-link">SSS</a>
+            <a href="#basvuru" class="mt-2 text-center py-3 bg-gradient-to-r from-brand-500 to-cyan-500 rounded-xl font-bold text-white shadow-md mobile-link">
+                Ön Başvuru Yap
+            </a>
+        </div>
+    </header>
+
+    <main class="pt-28">
+        <!-- 2. HERO SECTION -->
+        <section class="relative min-h-[88vh] flex items-center justify-center bg-grid-pattern px-4 sm:px-6 lg:px-8 py-16 overflow-hidden">
+            <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Sol Kolon: Başlık ve Açıklamalar -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-950/40 text-cyan-300 text-xs sm:text-sm font-medium shadow-inner">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        Yeni Dönem Başvuruları Başladı • 2026 Hibrit / Online
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight text-white leading-[1.15]">
+                        Geleceği Kodla: <br>
+                        <span class="text-gradient">Veri Bilimi ve Yapay Zeka</span> Uzmanlığı
+                    </h1>
+
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                        Sıfırdan ileri seviyeye; Python, Makine Öğrenmesi, Derin Öğrenme, LLM & Üretken Yapay Zeka ve MLOps. Avrupa Coding School güvencesiyle <strong class="text-white font-semibold">uluslararası staj & kariyer ekosistemine</strong> katılın.
+                    </p>
+
+                    <!-- Rozetler -->
+                    <div class="flex flex-wrap justify-center lg:justify-start gap-3 pt-2 text-xs sm:text-sm">
+                        <span class="glass-panel px-3.5 py-1.5 rounded-lg flex items-center gap-2 text-slate-300">
+                            <i class="fa-solid fa-code text-cyan-400"></i> %100 Uygulamalı Projeler
+                        </span>
+                        <span class="glass-panel px-3.5 py-1.5 rounded-lg flex items-center gap-2 text-slate-300">
+                            <i class="fa-solid fa-earth-europe text-indigo-400"></i> Avrupa Staj Ağı
+                        </span>
+                        <span class="glass-panel px-3.5 py-1.5 rounded-lg flex items-center gap-2 text-slate-300">
+                            <i class="fa-solid fa-user-check text-emerald-400"></i> 1-e-1 Mentorluk
+                        </span>
+                    </div>
+
+                    <!-- Butonlar -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#basvuru" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-600 via-indigo-600 to-cyan-500 hover:from-brand-500 hover:to-cyan-400 text-white font-bold text-center shadow-lg shadow-brand-500/25 transition transform hover:-translate-y-0.5">
+                            Ön Başvuru Formunu Doldur
+                        </a>
+                        <a href="#mufredat" class="w-full sm:w-auto px-7 py-4 rounded-xl glass-panel hover:bg-slate-800 text-slate-200 font-semibold text-center border border-slate-700/80 transition flex items-center justify-center gap-2 group">
+                            <span>Müfredatı İncele</span>
+                            <i class="fa-solid fa-arrow-down text-xs group-hover:translate-y-0.5 transition"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Sağ Kolon: İnteraktif Kod / Pipeline Simülasyonu -->
+                <div class="lg:col-span-5">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <!-- Parlama Efekti -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-2xl blur-xl opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+
+                        <div class="relative rounded-2xl bg-brand-darkCard border border-slate-800 shadow-2xl overflow-hidden font-mono text-xs sm:text-sm">
+                            <!-- Pencere Çubuğu -->
+                            <div class="bg-slate-900/90 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
+                                <div class="flex items-center gap-2">
+                                    <div class="w-3 h-3 rounded-full bg-rose-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                                    <div class="w-3 h-3 rounded-full bg-emerald-500/80"></div>
+                                </div>
+                                <span class="text-slate-400 text-[11px] font-sans">ecs_ai_pipeline.py</span>
+                                <span class="text-cyan-400 text-[11px]">Python 3.12</span>
+                            </div>
+
+                            <!-- Kod İçeriği -->
+                            <div class="p-5 space-y-3 bg-[#0a0f1d] leading-relaxed">
+                                <p><span class="text-purple-400">import</span> <span class="text-slate-200">torch</span>, <span class="text-slate-200">transformers</span></p>
+                                <p><span class="text-purple-400">from</span> <span class="text-cyan-400">ecs.pipeline</span> <span class="text-purple-400">import</span> <span class="text-yellow-300">DataScienceBootcamp</span></p>
+                                <div class="py-1"></div>
+                                <p class="text-slate-500"># Europe Coding School AI Programı Başlatılıyor</p>
+                                <p><span class="text-blue-400">student</span> = <span class="text-yellow-300">DataScienceBootcamp</span>(</p>
+                                <p class="pl-4"><span class="text-cyan-300">level</span>=<span class="text-emerald-400">"Beginner_to_Advanced"</span>,</p>
+                                <p class="pl-4"><span class="text-cyan-300">hands_on_projects</span>=<span class="text-amber-400">12</span>,</p>
+                                <p class="pl-4"><span class="text-cyan-300">focus</span>=[<span class="text-emerald-400">"MachineLearning"</span>, <span class="text-emerald-400">"LLMs"</span>, <span class="text-emerald-400">"MLOps"</span>],</p>
+                                <p class="pl-4"><span class="text-cyan-300">internship_ready</span>=<span class="text-rose-400">True</span></p>
+                                <p>)</p>
+                                <div class="py-1"></div>
+                                <p class="text-slate-400"><span class="text-blue-400">student</span>.<span class="text-yellow-300">train_and_deploy</span>()</p>
+                                
+                                <!-- Konsol Çıktısı -->
+                                <div class="mt-4 pt-3 border-t border-slate-800/80 text-[11px] font-sans text-emerald-400 flex items-center justify-between">
+                                    <span class="flex items-center gap-1.5">
+                                        <i class="fa-solid fa-circle-check"></i> Model Eğitildi & HuggingFace Yayında
+                                    </span>
+                                    <span class="text-slate-500">Doğruluk: %98.4</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mini İstatistik Kartı -->
+                        <div class="absolute -bottom-6 -right-3 sm:right-4 bg-slate-900/90 border border-slate-700/80 p-3.5 rounded-xl shadow-xl flex items-center gap-3 backdrop-blur-md">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-lg">
+                                <i class="fa-solid fa-briefcase"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs text-slate-400">İstihdam & Staj Desteği</div>
+                                <div class="text-sm font-bold text-white">Avrupa & Global Partnerler</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. METRİKLER & NEDEN ECS? -->
+        <section id="neden-ecs" class="py-20 px-4 sm:px-6 lg:px-8 border-y border-slate-800/60 bg-slate-900/30">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                    <h2 class="text-xs sm:text-sm font-bold tracking-widest uppercase text-cyan-400">Neden Europe Coding School?</h2>
+                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white">Teoriyle Boğulmayın, Gerçek Sektör Projeleri Üretin</h3>
+                    <p class="text-slate-400 text-sm sm:text-base">
+                        Geleneksel video kurslarından farklı olarak, canlı mentor seansları, modern endüstri araçları ve uluslararası iş ağı ile kariyerinizi sıfırdan inşa ediyoruz.
+                    </p>
+                </div>
+
+                <!-- 4 Temel Özellik Kartı -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Kart 1 -->
+                    <div class="glass-panel p-6 rounded-2xl hover:border-cyan-500/50 transition duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Canlı & İnteraktif Dersler</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Sektörde kıdemli veri bilimcilerle canlı dersler, anlık soru-cevap ve kod inceleme (code review) seansları.
+                        </p>
+                    </div>
+
+                    <!-- Kart 2 -->
+                    <div class="glass-panel p-6 rounded-2xl hover:border-brand-purple/50 transition duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Modern AI & LLM Odağı</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Sadece temel modellerle kalmayın; Generative AI, RAG sistemleri, LangChain ve Transformer mimarilerini öğrenin.
+                        </p>
+                    </div>
+
+                    <!-- Kart 3 -->
+                    <div class="glass-panel p-6 rounded-2xl hover:border-emerald-500/50 transition duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-diagram-project"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Uçtan Uca MLOps</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Modeli notebook'ta bırakmayın; Docker, API geliştirme, Hugging Face ve bulut ortamında canlıya almayı kavrayın.
+                        </p>
+                    </div>
+
+                    <!-- Kart 4 -->
+                    <div class="glass-panel p-6 rounded-2xl hover:border-amber-500/50 transition duration-300 group">
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-xl mb-5 group-hover:scale-110 transition">
+                            <i class="fa-solid fa-passport"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Avrupa & Global Staj Ağı</h4>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Programı başarıyla tamamlayan öğrencilere ECS partner şirketlerinde staj, referans mektubu ve kariyer rehberliği.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sayaçlar / İstatistik Bandı -->
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 p-6 rounded-2xl bg-gradient-to-r from-slate-900/80 via-slate-800/40 to-slate-900/80 border border-slate-800 text-center">
+                    <div>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-cyan-400 font-mono">16+</div>
+                        <div class="text-xs sm:text-sm text-slate-400 mt-1">Haftalık Yoğun Eğitim</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-indigo-400 font-mono">10+</div>
+                        <div class="text-xs sm:text-sm text-slate-400 mt-1">Portfolyo Projesi</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-purple-400 font-mono">1-e-1</div>
+                        <div class="text-xs sm:text-sm text-slate-400 mt-1">Haftalık Mentorluk</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl sm:text-4xl font-extrabold text-emerald-400 font-mono">%92</div>
+                        <div class="text-xs sm:text-sm text-slate-400 mt-1">Staj & İstihdam Oranı</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. KAPSAMLI MODÜLER MÜFREDAT -->
+        <section id="mufredat" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs sm:text-sm font-bold tracking-widest uppercase text-cyan-400">Adım Adım Yol Haritası</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Sektör Standartlarında Müfredat</h2>
+                <p class="text-slate-400 text-sm sm:text-base">
+                    Veri analizinden yapay zeka ürünleştirmeye kadar tüm aşamaları kapsayan 6 temel modül.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Modül 1 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-brand-500/40 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-brand-500/20 text-brand-cyan text-xs font-semibold">Modül 01</span>
+                            <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i>3 Hafta</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Python ile Veri Analitiği</h3>
+                        <p class="text-slate-400 text-sm mb-4">Veri manipülasyonunun temelleri, istatistiksel veri görselleştirme ve keşifsel veri analizi (EDA).</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-[10px]"></i> Python 3.x, Nesne Yönelimli Programlama</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-[10px]"></i> NumPy & Pandas ile Veri Manipülasyonu</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-[10px]"></i> Matplotlib & Seaborn Veri Görselleştirme</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800/80 text-xs font-mono text-slate-400">
+                        Proje: E-Ticaret Kullanıcı Davranışı Analizi
+                    </div>
+                </div>
+
+                <!-- Modül 2 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-brand-500/40 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-indigo-500/20 text-indigo-300 text-xs font-semibold">Modül 02</span>
+                            <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i>3 Hafta</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Klasik Makine Öğrenmesi</h3>
+                        <p class="text-slate-400 text-sm mb-4">Denetimli ve denetimsiz öğrenme algoritmaları, özellik mühendisliği ve hiperparametre optimizasyonu.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400 text-[10px]"></i> Regresyon, Sınıflandırma & Kümeleme</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400 text-[10px]"></i> Scikit-Learn & Feature Engineering</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-400 text-[10px]"></i> XGBoost, LightGBM, Model Validasyonu</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800/80 text-xs font-mono text-slate-400">
+                        Proje: Müşteri Terk (Churn) Tahmin Motoru
+                    </div>
+                </div>
+
+                <!-- Modül 3 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-brand-500/40 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-purple-500/20 text-purple-300 text-xs font-semibold">Modül 03</span>
+                            <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i>3 Hafta</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Derin Öğrenme & NLP / CV</h3>
+                        <p class="text-slate-400 text-sm mb-4">Yapay sinir ağları mimarisi, görüntü işleme ve doğal dil işleme modelleri.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400 text-[10px]"></i> PyTorch & TensorFlow Temelleri</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400 text-[10px]"></i> Konvolüsyonel Ağlar (CNN) & Görüntü Tanıma</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-purple-400 text-[10px]"></i> NLP, Metin İşleme ve Word Embeddings</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800/80 text-xs font-mono text-slate-400">
+                        Proje: Tıbbi Görüntü / Röntgen Teşhis Modeli
+                    </div>
+                </div>
+
+                <!-- Modül 4 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-cyan-500/40 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-cyan-500/20 text-cyan-300 text-xs font-semibold">Modül 04</span>
+                            <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i>3 Hafta</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Üretken Yapay Zeka & LLMs</h3>
+                        <p class="text-slate-400 text-sm mb-4">Büyük dil modelleri, prompt mühendisliği, RAG ve otonom yapay zeka ajanları geliştirme.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-[10px]"></i> Transformers, BERT & GPT Mimarileri</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-[10px]"></i> Retrieval-Augmented Generation (RAG)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-cyan-400 text-[10px]"></i> LangChain, LlamaIndex, Vektör Veritabanları</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800/80 text-xs font-mono text-slate-400">
+                        Proje: Kurumsal Dokümanlar Üzerinde Çalışan AI Asistanı
+                    </div>
+                </div>
+
+                <!-- Modül 5 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-brand-500/40 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-emerald-500/20 text-emerald-300 text-xs font-semibold">Modül 05</span>
+                            <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i>2 Hafta</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">MLOps & Canlıya Alma</h3>
+                        <p class="text-slate-400 text-sm mb-4">Modelleri sadece çalıştırmakla kalmayın, birer API ve servis haline getirip dünyaya açın.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> FastAPI ile Model API Geliştirme</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Docker Konteynerizasyonu & Hugging Face</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400 text-[10px]"></i> Model İzleme & CI/CD Entegrasyonu</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800/80 text-xs font-mono text-slate-400">
+                        Proje: Canlıda Çalışan Mikroservis AI Endpoint'i
+                    </div>
+                </div>
+
+                <!-- Modül 6 -->
+                <div class="glass-panel p-6 rounded-2xl border border-slate-800 hover:border-brand-500/40 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-2.5 py-1 rounded bg-amber-500/20 text-amber-300 text-xs font-semibold">Modül 06</span>
+                            <span class="text-xs text-slate-400"><i class="fa-regular fa-clock mr-1"></i>2 Hafta</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Bitirme Tezi & Avrupa Stajı</h3>
+                        <p class="text-slate-400 text-sm mb-4">Sektör jürisine sunulacak kapsamlı bitirme projesi, teknik mülakat provaları ve staj eşleşmeleri.</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> Uçtan Uca Endüstriyel Capstone Projesi</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> GitHub, LinkedIn & Global CV İncelemesi</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-400 text-[10px]"></i> Mock Technical Interviews & Staj Yerleşimi</li>
+                        </ul>
+                    </div>
+                    <div class="pt-4 border-t border-slate-800/80 text-xs font-mono text-slate-400">
+                        Proje: Jüri Karşısında Canlı Capstone Sunumu
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 5. KULLANILAN TEKNOLOJİLER & ARAÇLAR -->
+        <section class="py-12 border-y border-slate-800/60 bg-slate-900/40">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-widest mb-8">Eğitim Boyunca Uzmanlaşacağınız Ekosistem</p>
+                <div class="flex flex-wrap items-center justify-center gap-8 sm:gap-12 text-slate-400 text-2xl sm:text-3xl">
+                    <span title="Python" class="hover:text-white transition flex items-center gap-2 text-sm sm:text-base font-semibold"><i class="fa-brands fa-python text-2xl text-blue-400"></i> Python</span>
+                    <span title="PyTorch" class="hover:text-white transition flex items-center gap-2 text-sm sm:text-base font-semibold"><i class="fa-solid fa-fire text-2xl text-orange-400"></i> PyTorch</span>
+                    <span title="TensorFlow" class="hover:text-white transition flex items-center gap-2 text-sm sm:text-base font-semibold"><i class="fa-solid fa-cube text-2xl text-amber-400"></i> TensorFlow</span>
+                    <span title="Docker" class="hover:text-white transition flex items-center gap-2 text-sm sm:text-base font-semibold"><i class="fa-brands fa-docker text-2xl text-cyan-400"></i> Docker</span>
+                    <span title="Git & GitHub" class="hover:text-white transition flex items-center gap-2 text-sm sm:text-base font-semibold"><i class="fa-brands fa-github text-2xl text-slate-200"></i> GitHub</span>
+                    <span title="Hugging Face" class="hover:text-white transition flex items-center gap-2 text-sm sm:text-base font-semibold"><i class="fa-regular fa-face-smile text-2xl text-yellow-400"></i> Hugging Face</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ULUSLARARASI STAJ & KARİYER EKOSİSTEMİ -->
+        <section id="kariyer" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-xs sm:text-sm font-bold tracking-widest uppercase text-cyan-400">Kariyer & Gelecek</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Avrupa Teknoloji Pazarına Açılan Kapınız</h2>
+                    <p class="text-slate-300 leading-relaxed text-sm sm:text-base">
+                        Europe Coding School, sadece Türkiye'de değil; Almanya, Hollanda, Estonya ve İngiltere gibi Avrupa'nın önde gelen teknoloji merkezlerinde staj ve uzaktan (remote) çalışma ağları kurmanıza yardımcı olur.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-file-contract"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Uluslararası Geçerli Başarı Sertifikası</h4>
+                                <p class="text-slate-400 text-xs sm:text-sm">Avrupa standartlarına uygun, doğrulanabilir dijital mezuniyet sertifikası ve proje transkripti.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Birebir CV, LinkedIn ve Mülakat Koçluğu</h4>
+                                <p class="text-slate-400 text-xs sm:text-sm">Uluslararası şirketlerin teknik test ve algoritma mülakatlarına (Live Coding) özel hazırlık seansları.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Mezun & Mentor Network'ü</h4>
+                                <p class="text-slate-400 text-xs sm:text-sm">Avrupa'daki mezun topluluğumuzla doğrudan iletişim, kariyer tavsiyeleri ve ortak hackathon'lar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sağ Taraf: Staj Süreci Kartı -->
+                <div class="lg:col-span-6">
+                    <div class="glass-panel p-8 rounded-3xl border border-slate-800 relative">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-bold text-white">4 Adımda Kariyer Başlangıcı</h3>
+                            <p class="text-xs text-slate-400 mt-1">Eğitimden profesyonel çalışma hayatına geçiş haritası</p>
+                        </div>
+
+                        <div class="space-y-6 relative before:absolute before:inset-0 before:left-5 before:w-0.5 before:bg-slate-800">
+                            <!-- Adım 1 -->
+                            <div class="relative flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-cyan-500 text-brand-dark flex items-center justify-center font-bold text-sm shrink-0 z-10 shadow-lg shadow-cyan-500/30">1</div>
+                                <div class="glass-panel p-3.5 rounded-xl border border-slate-700/60 w-full">
+                                    <div class="text-sm font-semibold text-white">Temel & İleri Eğitim</div>
+                                    <div class="text-xs text-slate-400">Canlı dersler, haftalık ödevler ve lab çalışmaları.</div>
+                                </div>
+                            </div>
+                            <!-- Adım 2 -->
+                            <div class="relative flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-500 text-white flex items-center justify-center font-bold text-sm shrink-0 z-10 shadow-lg shadow-brand-500/30">2</div>
+                                <div class="glass-panel p-3.5 rounded-xl border border-slate-700/60 w-full">
+                                    <div class="text-sm font-semibold text-white">Gerçek Dünya Portfolyosu</div>
+                                    <div class="text-xs text-slate-400">GitHub ve Hugging Face üzerinde çalışan canlı demolar.</div>
+                                </div>
+                            </div>
+                            <!-- Adım 3 -->
+                            <div class="relative flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold text-sm shrink-0 z-10 shadow-lg shadow-purple-500/30">3</div>
+                                <div class="glass-panel p-3.5 rounded-xl border border-slate-700/60 w-full">
+                                    <div class="text-sm font-semibold text-white">Teknik Mülakat Simülasyonları</div>
+                                    <div class="text-xs text-slate-400">Senior mühendislerle birebir teknik denemeler.</div>
+                                </div>
+                            </div>
+                            <!-- Adım 4 -->
+                            <div class="relative flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shrink-0 z-10 shadow-lg shadow-emerald-500/30">4</div>
+                                <div class="glass-panel p-3.5 rounded-xl border border-slate-700/60 w-full">
+                                    <div class="text-sm font-semibold text-white">Staj & İş Eşleşmesi</div>
+                                    <div class="text-xs text-slate-400">Partner şirket havuzu ile mülakat süreçlerinin başlatılması.</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 7. SSS (SIKÇA SORULAN SORULAR) -->
+        <section id="sss" class="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <div class="text-center mb-12 space-y-3">
+                <span class="text-xs sm:text-sm font-bold tracking-widest uppercase text-cyan-400">Aklınıza Takılanlar</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Sıkça Sorulan Sorular</h2>
+                <p class="text-slate-400 text-sm">Program, kabul süreci ve kariyer desteğiyle ilgili en çok merak edilen noktalar.</p>
+            </div>
+
+            <div class="space-y-4" id="faqAccordion">
+                <!-- Soru 1 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden transition">
+                    <button class="w-full px-6 py-4 text-left font-semibold text-white flex justify-between items-center faq-btn hover:text-cyan-400">
+                        <span>Programa katılmak için kodlama veya matematik geçmişi şart mı?</span>
+                        <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm text-slate-400 border-t border-slate-800/60 pt-3">
+                        Hayır. Programımız sıfırdan başlar ve ilk modüllerde gerekli Python ve temel matematik/istatistik temellerini inşa eder. Mantıksal düşünmeye açık, düzenli çalışmaya ve araştırmaya hevesli herkes programa katılabilir.
+                    </div>
+                </div>
+
+                <!-- Soru 2 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden transition">
+                    <button class="w-full px-6 py-4 text-left font-semibold text-white flex justify-between items-center faq-btn hover:text-cyan-400">
+                        <span>Dersler hangi gün ve saatlerde yapılıyor? Çalışırken katılabilir miyim?</span>
+                        <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm text-slate-400 border-t border-slate-800/60 pt-3">
+                        Evet. Derslerimiz çalışan profesyoneller ve üniversite öğrencileri düşünülerek hafta içi akşamları ve hafta sonu seansları olarak planlanmaktadır. Ayrıca tüm canlı ders kayıtları öğrenci portalında ömür boyu erişime açık tutulur.
+                    </div>
+                </div>
+
+                <!-- Soru 3 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden transition">
+                    <button class="w-full px-6 py-4 text-left font-semibold text-white flex justify-between items-center faq-btn hover:text-cyan-400">
+                        <span>Staj garantisi veya desteği süreci nasıl işliyor?</span>
+                        <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm text-slate-400 border-t border-slate-800/60 pt-3">
+                        Ödev ve bitirme projesini başarı kriterlerine uygun tamamlayan tüm öğrencilerimiz, Europe Coding School'un Avrupa ve Türkiye'deki partner teknoloji şirketlerinin staj havuzuna yönlendirilir, CV'leri doğrudan teknik liderlere iletilir.
+                    </div>
+                </div>
+
+                <!-- Soru 4 -->
+                <div class="glass-panel rounded-2xl border border-slate-800 overflow-hidden transition">
+                    <button class="w-full px-6 py-4 text-left font-semibold text-white flex justify-between items-center faq-btn hover:text-cyan-400">
+                        <span>Hangi donanıma ve bilgisayara ihtiyacım olacak?</span>
+                        <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content hidden px-6 pb-5 text-sm text-slate-400 border-t border-slate-800/60 pt-3">
+                        Derin öğrenme ve LLM pratiklerinde Google Colab ve bulut GPU kaynaklarını (Kaggle/AWS) aktif olarak kullandığımız için yüksek donanımlı bir GPU'ya sahip olmanız gerekmez. Standart bir dizüstü bilgisayar ve internet bağlantısı yeterlidir.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. ÖN BAŞVURU & İLETİŞİM FORMU -->
+        <section id="basvuru" class="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-slate-900/60 to-brand-dark">
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-slate-800 shadow-glow relative overflow-hidden">
+                    
+                    <!-- Form Başlığı -->
+                    <div class="text-center max-w-xl mx-auto mb-10 space-y-3">
+                        <span class="inline-block px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-400 text-xs font-semibold">Kontenjanlar Sınırlıdır</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Geleceğinize İlk Adımı Atın</h2>
+                        <p class="text-slate-400 text-sm">
+                            Ön başvurunuzu yapın, eğitim danışmanlarımız 24 saat içinde program ayrıntıları ve burs imkanları için sizinle iletişime geçsin.
+                        </p>
+                    </div>
+
+                    <!-- Form Alanı -->
+                    <form id="applicationForm" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-xs font-semibold uppercase text-slate-400 mb-2">Ad Soyad *</label>
+                                <input type="text" id="name" required placeholder="örn. Ali Yılmaz" 
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition text-sm">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-semibold uppercase text-slate-400 mb-2">E-posta Adresi *</label>
+                                <input type="email" id="email" required placeholder="örn. ali@domain.com" 
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition text-sm">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="phone" class="block text-xs font-semibold uppercase text-slate-400 mb-2">Telefon Numarası *</label>
+                                <input type="tel" id="phone" required placeholder="+90 5xx xxx xx xx" 
+                                    class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition text-sm">
+                            </div>
+                            <div>
+                                <label for="experience" class="block text-xs font-semibold uppercase text-slate-400 mb-2">Mevcut Seviyeniz</label>
+                                <select id="experience" class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition text-sm">
+                                    <option value="beginner">Sıfırdan Başlıyorum (Hiç Kodlama Bilmiyorum)</option>
+                                    <option value="intermediate">Temel Python / Yazılım Biliyorum</option>
+                                    <option value="advanced">Veri Analisti / Kariyerimi AI'a Taşımak İstiyorum</option>
+                                    <option value="student">Üniversite Öğrencisiyim</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="goal" class="block text-xs font-semibold uppercase text-slate-400 mb-2">Bu Eğitimdeki Temel Hedefiniz</label>
+                            <textarea id="goal" rows="3" placeholder="örn. Avrupa'da veri bilimci olarak staj bulmak, mevcut işimde yapay zeka projeleri geliştirmek..." 
+                                class="w-full px-4 py-3 rounded-xl bg-slate-900/90 border border-slate-700/80 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition text-sm"></textarea>
+                        </div>
+
+                        <!-- Onay Kutusu -->
+                        <div class="flex items-center gap-3">
+                            <input type="checkbox" id="kvkk" required class="w-4 h-4 rounded bg-slate-900 border-slate-700 text-cyan-500 focus:ring-cyan-400">
+                            <label for="kvkk" class="text-xs text-slate-400">
+                                Europe Coding School bilgilendirme ve veri politikalarını okudum, kabul ediyorum.
+                            </label>
+                        </div>
+
+                        <!-- Gönder Butonu -->
+                        <button type="submit" id="submitBtn" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-600 via-indigo-600 to-cyan-500 hover:from-brand-500 hover:to-cyan-400 text-white font-bold text-center shadow-lg shadow-brand-500/25 transition duration-300">
+                            Ön Başvuruyu Gönder
+                        </button>
+                    </form>
+
+                    <!-- Başarı / Bildirim Mesajı Kutusu (Custom Message Box - No alert()) -->
+                    <div id="formSuccessMessage" class="hidden mt-6 p-6 rounded-2xl bg-emerald-950/60 border border-emerald-500/50 text-center animate-fade-in">
+                        <div class="w-12 h-12 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-1">Başvurunuz Başarıyla Alındı!</h4>
+                        <p class="text-slate-300 text-sm">
+                            Tebrikler! Europe Coding School kabul ekibimiz bilgilerinizi inceleyip WhatsApp ve E-posta yoluyla sizinle irtibata geçecektir.
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 9. FOOTER -->
+    <footer class="border-t border-slate-800 bg-brand-dark py-12 px-4 sm:px-6 lg:px-8 text-slate-400 text-sm">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 mb-10">
+            
+            <div class="md:col-span-5 space-y-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-600 to-cyan-400 flex items-center justify-center text-white font-bold text-sm">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <span class="font-extrabold text-white text-base">Europe Coding <span class="text-cyan-400">School</span></span>
+                </div>
+                <p class="text-xs text-slate-400 max-w-sm leading-relaxed">
+                    Avrupa standartlarında yazılım, veri bilimi ve yapay zeka eğitim ekosistemi. Gerçek sektör mentorluğu ile geleceğin mühendislerini yetiştiriyoruz.
+                </p>
+                <div class="flex items-center gap-4 text-slate-400 text-base">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="hover:text-cyan-400 transition"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="md:col-span-3 space-y-2">
+                <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-3">Hızlı Bağlantılar</h4>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#mufredat" class="hover:text-cyan-400 transition">Müfredat İçeriği</a></li>
+                    <li><a href="#neden-ecs" class="hover:text-cyan-400 transition">Neden Europe Coding School?</a></li>
+                    <li><a href="#kariyer" class="hover:text-cyan-400 transition">Staj ve İstihdam Politikası</a></li>
+                    <li><a href="#basvuru" class="hover:text-cyan-400 transition">Ön Başvuru Formu</a></li>
+                </ul>
+            </div>
+
+            <div class="md:col-span-4 space-y-2">
+                <h4 class="text-white text-xs font-bold uppercase tracking-wider mb-3">İletişim & Lokasyon</h4>
+                <p class="text-xs text-slate-400 flex items-start gap-2">
+                    <i class="fa-solid fa-location-dot text-cyan-400 mt-0.5"></i>
+                    <span>Berlin • Amsterdam • İstanbul (Online & Hibrit)</span>
+                </p>
+                <p class="text-xs text-slate-400 flex items-center gap-2">
+                    <i class="fa-regular fa-envelope text-cyan-400"></i>
+                    <span>info@europecodingschool.com</span>
+                </p>
+                <p class="text-xs text-slate-400 flex items-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+                    <span>Öğrenci Kabul Danışma Hattı</span>
+                </p>
+            </div>
+
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <p>© 2026 Europe Coding School. Tüm hakları saklıdır.</p>
+            <p class="flex items-center gap-1">
+                GitHub Pages ile barındırılmaktadır <i class="fa-brands fa-github text-slate-300"></i>
+            </p>
+        </div>
+    </footer>
+
+    <!-- INTERAKTİF JAVASCRIPT KODLARI -->
+    <script>
+        // Mobil Menü Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Sıkça Sorulan Sorular Accordion
+        const faqButtons = document.querySelectorAll('.faq-btn');
+
+        faqButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+
+                // Açık/Kapalı durumu değiştir
+                const isOpen = !content.classList.contains('hidden');
+
+                // Diğerlerini kapat
+                document.querySelectorAll('.faq-content').forEach(c => c.classList.add('hidden'));
+                document.querySelectorAll('.faq-btn i').forEach(i => i.classList.remove('rotate-180'));
+
+                if (!isOpen) {
+                    content.classList.remove('hidden');
+                    icon.classList.add('rotate-180');
+                }
+            });
+        });
+
+        // Başvuru Formu İşleme (No alert, clean DOM message)
+        const appForm = document.getElementById('applicationForm');
+        const successMessage = document.getElementById('formSuccessMessage');
+        const submitBtn = document.getElementById('submitBtn');
+
+        appForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Gönderim efekti
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Başvurunuz Kaydediliyor...';
+
+            setTimeout(() => {
+                appForm.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 800);
+        });
+    </script>
+</body>
+</html>
